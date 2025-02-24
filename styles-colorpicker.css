@@ -1,0 +1,413 @@
+/* 页面加载时的过渡效果 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    opacity: 0;  /* 初始为透明 */
+    background-color: #F5F5F5;
+    animation: fadeIn 1s forwards; /* 页面加载时渐变进入 */
+}
+
+/* 渐变效果动画 */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* 修正：整体容器在打开sidebar时向左移动 */
+.container {
+    display: flex;
+    width: 100%;
+    transition: transform 0.3s ease-in-out; /* 使容器在sidebar打开时平滑移动 */
+}
+
+h3 {
+    color: white;  /* Makes the text color white */
+    font-size: 2em;  /* Makes the font size larger */
+    text-align: center;  /* Centers the text horizontally */
+    margin: 0;
+    padding: 0;
+}
+
+
+.left-side {
+    width: 60%;
+    height: 100vh;
+    background-color: #F5F5F5;
+    flex-direction: column;
+
+}
+
+/* Style for the sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 350px;
+    height: 100%;
+    background-color: #333;
+    overflow-y: auto;
+    transition: right 0.3s;
+    padding-top: 50px; /* Optional: space for the toggle button */
+}
+
+/* Media Query for smaller screens (e.g., mobile) */
+@media (max-width: 768px) {
+    /* Adjust the layout for mobile */
+    .container {
+        flex-direction: column; /* Stack elements vertically */
+    }
+
+    .left-side {
+        width: 100%; /* Full width on small screens */
+        height: auto;
+    }
+
+    .right-side {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .sidebar {
+        width: 250px; /* Sidebar width for smaller screens */
+        right: -250px; /* Initially hidden */
+    }
+
+    /* Change layout of sidebar buttons */
+    .sidebar-btn {
+        width: 100%;
+        height: auto;
+        padding-bottom: 30%; /* Maintain aspect ratio */
+    }
+
+    /* Hide sidebar buttons in small screens */
+    .sidebar-button {
+        padding: 5px;
+        margin: 10px 0;
+        background-color: #555;
+        color: white;
+        width: 80px;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+/* Media Query for extra small screens (e.g., very small phones) */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px; /* Reduce font size for smaller screens */
+    }
+
+    /* Adjust the layout for even smaller screens */
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .left-side, .right-side {
+        padding: 10px; /* Reduce padding */
+    }
+
+    .sidebar {
+        width: 200px; /* Even smaller sidebar */
+    }
+
+    .color-picker-container {
+        width: 100%; /* Color picker takes full width */
+        height: 300px; /* Adjust height */
+    }
+
+    /* Adjust color buttons for smaller screens */
+    .color-btn {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* Media Query for large screens (e.g., desktop) */
+@media (min-width: 1200px) {
+    .container {
+        flex-direction: row; /* Arrange elements in a row */
+    }
+
+    .left-side {
+        width: 70%; /* Larger width on desktop */
+    }
+
+    .right-side {
+        width: 30%;
+    }
+
+    .sidebar {
+        width: 350px; /* Sidebar width for large screens */
+    }
+
+    .color-picker-container {
+        width: 400px;
+        height: 400px;
+    }
+
+    .color-btn {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* 添加container向左移动的效果 */
+.container.sidebar-open {
+transform: scale(0.95); /* 缩小容器为原来的 80% */
+}
+
+/* 调整sidebar打开时的右边位置 */
+.sidebar.open {
+    right: 0;
+}
+
+/* Style for the toggle button (position it in the right top corner of the sidebar) */
+.toggle-btn {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 5px;
+    right: 10px;
+    padding: 5px;
+    background-color: #828181;
+    color: white;
+    border: none;
+    border-radius: 20%;
+    font-size: 20px;
+    cursor: pointer;
+    display: none; /* Initially hidden */
+    z-index: 1000; /* Ensure it's above other content */
+    transition: right 0.3s ease-in-out; /* Animation when toggling */
+}
+
+/* Show toggle button when sidebar is open */
+.sidebar.open .toggle-btn {
+    display: block;
+}
+
+/* Hover effect on the toggle button */
+.toggle-btn:hover {
+    background-color: #ffffff;
+    color: black;
+
+}
+
+/* Sidebar content */
+.sidebar-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sidebar Buttons */
+.sidebar-button {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #555;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+.color-display {
+    width: 78%;
+    height: 98%;
+    background-color: #FFFFFF; /* Default background color */
+    border-radius: 10px;
+
+ /* Centering horizontally */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+
+   /* Center the background image */
+    background-size: auto; /* Ensure the image is contained and not stretched */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Ensure the image doesn't repeat */
+
+}
+
+.right-side {
+    width: 40%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* 默认禁用 color picker 和 color buttons */
+.color-picker-container {
+    pointer-events: none;  /* 禁用整个颜色选择器 */
+    opacity: 0.5;  /* 给禁用状态加上一些透明度效果 */
+}
+
+.color-btn {
+    pointer-events: none;  /* 禁用单个颜色按钮 */
+    opacity: 0.5;  /* 让按钮显得灰暗 */
+}
+
+/* 为选中的颜色按钮添加样式 */
+.color-btn.selected {
+    border: 2px solid #000;  /* 给选中的按钮添加边框 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);  /* 添加阴影效果 */
+    transform: scale(1.1);  /* 让选中的按钮变大一点 */
+}
+
+
+/* Color Picker Container */
+.color-picker-container {
+    margin-bottom: 20px;
+    position: relative;
+    width: 500px; /* 你可以根据需要调整宽度 */
+    height: 400px; /* 调整高度来缩小 picker */
+    overflow: hidden; /* 防止超出容器 */
+}
+
+/* Color Picker */
+.color-picker {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr); /* 每行15个按钮 */
+    grid-template-rows: repeat(10, 1fr); /* 10 buttons per column, equally spaced */
+    grid-gap: 0; /* Remove the gap between buttons */
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Color Button Style */
+.color-btn {
+    width: 32px; /* 缩小按钮的宽度 */
+    height: 32px; /* 缩小按钮的高度 */
+    border-radius: 0%;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+/* Hover Effect */
+.color-btn:hover {
+    transform: scale(2);
+}
+
+/* Color Code Display */
+#color-code {
+    margin-top: 13px;
+    font-size: 20px;
+    text-align: center;
+    padding: 0px;
+    border: 3px solid #ddd;
+    border-radius: 5px;
+    background-color: #F5F5F5;
+    width: 493px;
+}
+
+/* Button Container */
+.button-container {
+    width: 500px; /* 你可以根据需要调整宽度 */
+    height: 360px; /* 调整高度来缩小 picker */
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+}
+
+.image-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Each row will have 2 buttons */
+    grid-template-rows: repeat(10, 1fr); /* 10 buttons per column, equally spaced */
+    grid-gap: 0; /* Remove the gap between buttons */
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+}
+
+/* Sidebar Buttons with Image Appearance */
+.sidebar-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 60%; /* Ensures buttons are square */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sidebar-btn img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ensure the image takes the full button size */
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the button area */
+    transition: transform 0.3s;
+}
+
+.sidebar-btn:hover img {
+    transform: scale(1.5); /* Slight zoom effect on hover */
+}
+
+
+.sidebar-btn:focus {
+    outline: none;
+}
+
+/* Sidebar (for 5 buttons) sidebar menu button layout*/
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    overflow-y: auto;
+    transition: right 0.3s;
+}
+
+.sidebar-content {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-button {
+    padding: 5px;
+    margin: 10px 0;
+    background-color: #555;
+    color: white;
+    width:80px;
+    border: none;
+    cursor: pointer;
+
+}
+
+.sidebar-button:hover {
+    background-color: #666;
+}
+
+/* 返回按钮的样式 */
+.backButton {
+    position: fixed; /* 固定在页面左下角 */
+    bottom: 20px; /* 离底部20px */
+    left: 0px; /* 离左边20px */
+    padding: 10px 20px;
+    width: 70px;
+    height: 70px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玻璃展示页面</title>
+    <link rel="stylesheet" href="styles-design.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧区域：选择玻璃样本设计 和 场景切换按钮 -->
+        <div class="left-side">
+            <!-- 选择玻璃样本设计 -->
+            <div class="glass-samples">
+                <h2 style="text-align: center;">DDG - Rack 8</h2>
+                <div class="samples-container">
+                    <button class="btn" id="glass-sample1">
+                        <img src="images/p1.png" alt="玻璃样本1">
+                    </button>
+                    <button class="btn" id="glass-sample2">
+                        <img src="images/p2.png" alt="玻璃样本2">
+                    </button>
+                    <button class="btn" id="glass-sample3">
+                        <img src="images/p3.png" alt="玻璃样本3">
+                    </button>
+                    <button class="btn" id="glass-sample4">
+                        <img src="images/p4.png" alt="玻璃样本4">
+                    </button>
+                    <button class="btn" id="glass-sample5">
+                        <img src="images/p5.png" alt="玻璃样本5">
+                    </button>
+                    <button class="btn" id="glass-sample6">
+                        <img src="images/p6.png" alt="玻璃样本6">
+                    </button>
+                    <button class="btn" id="glass-sample7">
+                        <img src="images/p7.png" alt="玻璃样本7">
+                    </button>
+                    <button class="btn" id="glass-sample8">
+                        <img src="images/p8.png" alt="玻璃样本8">
+                    </button>
+                    <button class="btn" id="glass-sample9">
+                        <img src="images/p9.png" alt="玻璃样本9">
+                    </button>
+                    <button class="btn" id="glass-sample10">
+                        <img src="images/p10.png" alt="玻璃样本10">
+                    </button>
+                     <button class="btn" id="glass-sample11">
+                        <img src="images/p11.png" alt="玻璃样本11">
+                    </button>
+                     <button class="btn" id="glass-sample12">
+                        <img src="images/p12.png" alt="玻璃样本12">
+                    </button>
+                     <button class="btn" id="glass-sample13">
+                        <img src="images/p13.png" alt="玻璃样本13">
+                    </button>
+                     <button class="btn" id="glass-sample14">
+                        <img src="images/p14.png" alt="玻璃样本14">
+                    </button>
+                     <button class="btn" id="glass-sample15">
+                        <img src="images/p15.png" alt="玻璃样本15">
+                    </button>
+                     <button class="btn" id="glass-sample16">
+                        <img src="images/p16.png" alt="玻璃样本16">
+                    </button>
+                     <button class="btn" id="glass-sample17">
+                        <img src="images/p17.png" alt="玻璃样本17">
+                    </button>
+                     <button class="btn" id="glass-sample18">
+                        <img src="images/p18.png" alt="玻璃样本18">
+                    </button>
+                     <button class="btn" id="glass-sample19">
+                        <img src="images/p19.png" alt="玻璃样本19">
+                    </button>
+                     <button class="btn" id="glass-sample20">
+                        <img src="images/p20.png" alt="玻璃样本20">
+                    </button>
+                     <button class="btn" id="glass-sample21">
+                        <img src="images/p21.png" alt="玻璃样本21">
+                    </button>
+                     <button class="btn" id="glass-sample22">
+                        <img src="images/p22.png" alt="玻璃样本22">
+                    </button>
+                     <button class="btn" id="glass-sample23">
+                        <img src="images/p23.png" alt="玻璃样本23">
+                    </button>
+                     <button class="btn" id="glass-sample24">
+                        <img src="images/p24.png" alt="玻璃样本24">
+                    </button>
+                     <button class="btn" id="glass-sample25">
+                        <img src="images/p25.png" alt="玻璃样本25">
+                    </button>
+                </div>
+            </div>
+
+            <!-- 场景切换 -->
+            <div class="scenes">
+                <h2 style="text-align: center;">Scenes</h2>
+                <div class="scenes-container">
+                    <button class="btn" id="scene1">
+                        <img src="images-page2/s3.jpg" alt="场景1">
+                    </button>
+                    <button class="btn" id="scene2">
+                        <img src="images-page2/s1.jpg" alt="场景2">
+                    </button>
+                    <button class="btn" id="scene3">
+                        <img src="images-page2/s2.jpg" alt="场景3">
+                    </button>
+                    <button class="btn" id="scene4">
+                        <img src="images-page2/s4.jpg" alt="场景4">
+                    </button>
+                    <button class="btn" id="scene5">
+                        <img src="images-page2/s5.jpg" alt="场景5">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+     <!-- 返回首页按钮 -->
+     <button id="backButton" onclick="goToPage('mainpage.htm')">Home</button>
+     <button id="nextButton5" onclick="goToPage('page2.htm')">Rack 6</button>
+     <button id="nextButton" onclick="goToPage('page2_50.htm')">Rack 7</button>
+     <button id="rack8Button">Rack 8</button>
+     <button id="nextButton3" onclick="goToPage('page2_100.htm')">Rack 9</button>
+
+
+        <!-- 右侧区域：展示区与侧边栏 -->
+        <div class="right-side">
+                        <div class="display-area">
+                <div class="image-container">
+                    <img id="display-image" src="images/logo-ddg.png" alt="展示图片">
+                </div>
+            </div>
+ 
+<!-- Sidebar -->
+<div class="sidebar">
+    <!-- 新增的顶部按钮 -->
+     <button class="new-btn">
+        <img src="Showroomcolor/colorizer.png">
+    </button>
+    
+    <!-- 现有的按钮容器 -->
+    <div class="sidebar-buttons">
+        <button class="btn">Button 1</button>
+        <button class="btn">Button 2</button>
+        <!-- 其他现有按钮 -->
+    </div>
+</div>
+
+ <!-- 弹出窗口 (初始时隐藏) -->
+<div class="popup-window" id="popupWindow">
+    <div class="popup-content">
+        <button class="popclose-btn" id="closePopupBtn">X</button>
+        <iframe src="colorpicker.htm" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+</div>
+
+
+            <!-- Sidebar for additional buttons -->
+            <div id="sidebar" class="sidebar">
+                <button id="closeSidebar" class="close-btn">关闭</button> <!-- 关闭按钮 -->
+                <h2>样本颜色选项</h2>
+                <div class="sidebar-buttons">
+                    <!-- 动态加载的按钮将显示在这里 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="design-scripts.js"></script>
+</body>
+</html>

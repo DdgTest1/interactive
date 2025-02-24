@@ -1,0 +1,883 @@
+/* 重置默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* 页面主体 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+}
+
+
+/* 容器布局 */
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* 容器布局 */
+.containers {
+    display: flex;
+    flex-direction: column;  /* 设置为纵向排列 */
+    align-items: center;     /* 水平居中 */
+    justify-content: center; /* 垂直居中 */
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* 左侧区域 */
+.left-side {
+    width: 25%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+ 
+/ 让按钮容器支持滚动 /
+.samples-container {
+    max-height: 400px; / 根据实际需要调整最大高度 /
+    overflow-y: scroll;  / 总是显示滚动条 /
+    margin-bottom: 20px;
+    padding-right: 10px; / 确保滚动条不会被遮挡 /
+    box-sizing: border-box;  / 包括内边距和滚动条宽度 /
+}
+
+/ 设置滚动条样式，避免多余滚动条 /
+.samples-container::-webkit-scrollbar {
+    width: 8px; / 固定宽度 /
+}
+
+/ 设置滚动条轨道的样式 /
+.samples-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/ 设置滚动条的颜色 /
+.samples-container::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/ 设置滚动条在悬停时的颜色 /
+.samples-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+.glass-samples {
+    max-height: 400px; /* 你可以根据需要调整这个最大高度 */
+    overflow-y: auto;  /* 启用纵向滚动 */
+    padding-right: 10px; /* 确保滚动条不被遮挡 */
+    box-sizing: border-box; /* 让滚动条不影响布局 */
+}
+
+/* 自定义滚动条样式 */
+.glass-samples::-webkit-scrollbar {
+    width: 8px; /* 设置滚动条宽度 */
+}
+
+.glass-samples::-webkit-scrollbar-track {
+    background: #f1f1f1; /* 设置滚动条轨道背景 */
+}
+
+.glass-samples::-webkit-scrollbar-thumb {
+    background: #888; /* 设置滚动条滑块颜色 */
+}
+
+.glass-samples::-webkit-scrollbar-thumb:hover {
+    background: #555; /* 鼠标悬停时改变颜色 */
+}
+
+
+/* 右侧展示区域 */
+.right-side {
+    width: 75%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 20px;
+    position: relative;
+    
+}
+
+/* 标题 */
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 46px;
+    margin-bottom: 20px;
+    position: relative;
+    top: -50px; /* 往上移动50px */
+}
+
+
+/* 按钮容器 */
+.samples-container, .scenes-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 每行显示5个按钮 */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+
+.image-container {
+    display: flex;
+    justify-content: center;  /* 水平居中 */
+    align-items: center;      /* 垂直居中 */
+    height: 100vh;            /* 如果需要让容器填充整个视口高度 */
+}
+
+@media (max-width: 768px) {
+    .buttons-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* 按钮被选中时，添加青色边框 */
+.btn:focus, .btn:active {
+    outline: none; /* 移除默认的聚焦边框 */
+    border: 2px solid cyan; /* 设置青色边框 */
+}
+
+/* 鼠标悬停时的效果 */
+.btn:hover {
+    transform: scale(1.1);
+}
+
+/* 点击时的边框动画效果 */
+.btn:active img {
+    animation: buttonClickEffect 0.3s ease-out;
+}
+
+/* 动画效果: 点击按钮时，按钮的边框扩大然后恢复 */
+@keyframes buttonClickEffect {
+    0% {
+        transform: scale(1.1); /* 初始放大 */
+    }
+    50% {
+        transform: scale(0.95); /* 收缩 */
+    }
+    100% {
+        transform: scale(1); /* 恢复原状 */
+    }
+}
+
+
+/* 每个按钮样式 */
+.btn {
+    width: 100%;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    border: none;
+    position: relative;
+}
+
+/* 按钮的默认状态，添加过渡效果 */
+.btn img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    max-width: 80%;
+    height: auto;
+}
+
+/* 鼠标悬停时的效果 */
+.glass-samples .btn:hover {
+    transform: scale(1.05); /* 鼠标悬停时放大按钮 */
+}
+
+.glass-samples .btn:hover img {
+    transform: scale(1.05); /* 鼠标悬停时放大图片 */
+}
+
+/* 点击时的边框动画效果 */
+.glass-samples .btn:active img {
+    animation: buttonClickEffect 0.3s ease-out;
+}
+
+/* 动画效果: 点击按钮时，按钮的边框扩大然后恢复 */
+@keyframes buttonClickEffect {
+    0% {
+        transform: scale(1.1); /* 初始放大 */
+    }
+    50% {
+        transform: scale(0.95); /* 收缩 */
+    }
+    100% {
+        transform: scale(1); /* 恢复原状 */
+    }
+}
+
+/* 假设 ".scenes" 是选择场景的容器 */
+.scenes {
+    margin-top: 50px;  /* 根据需要调整这个数值，让选择场景整体向下移动 */
+}
+
+.scenes .btn {
+    width: 100%;  /* 按钮宽度填充父容器 */
+    height: 100%; /* 按钮高度填充父容器 */
+    display: inline-flex; /* 使用flex布局确保内容居中 */
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box; /* 包括内边距和边框在内 */
+    margin: 0;
+    padding: 0;
+}
+
+.scenes .btn img {
+    width: 100%;    /* 图片宽度填充按钮 */
+    height: 100%;   /* 图片高度填充按钮 */
+    object-fit: cover; /* 保持比例并覆盖整个按钮 */
+    display: block;  /* 确保没有多余的空白间隙 */
+    margin: 0;       /* 删除图片的外边距 */
+    padding: 0;      /* 删除图片的内边距 */
+}
+
+
+/* 鼠标悬停时的效果 */
+.scenes .btn:hover {
+    transform: scale(1.05); /* 鼠标悬停时放大按钮 */
+}
+
+.scenes .btn:hover img {
+    transform: scale(1.05); /* 鼠标悬停时放大图片 */
+}
+
+/* 点击时的边框动画效果 */
+.scenes .btn:active img {
+    animation: buttonClickEffect 0.3s ease-out;
+}
+
+/* 动画效果: 点击按钮时，按钮的边框扩大然后恢复 */
+@keyframes buttonClickEffect {
+    0% {
+        transform: scale(1.1); /* 初始放大 */
+    }
+    50% {
+        transform: scale(0.95); /* 收缩 */
+    }
+    100% {
+        transform: scale(1); /* 恢复原状 */
+    }
+}
+
+/* 鼠标悬停时的效果 */
+.btn:hover img {
+    transform: scale(1.1);
+}
+
+/* 点击时的边框动画效果 */
+.btn:active img {
+    animation: buttonClickEffect 0.3s ease-out;
+}
+
+/* 动画效果: 点击按钮时，按钮的边框扩大然后恢复 */
+@keyframes buttonClickEffect {
+    0% {
+        transform: scale(1.1); /* 初始放大 */
+    }
+    50% {
+        transform: scale(0.95); /* 收缩 */
+    }
+    100% {
+        transform: scale(1); /* 恢复原状 */
+    }
+}
+
+.sidebar-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;  /* 控制按钮之间的间距 */
+    justify-content: space-evenly;  /* 使按钮平均分布 */
+}
+
+.sidebar-buttons .btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.sidebar-buttons .btn img {
+    width: 60px;  /* 根据需要调整图片的大小 */
+    height: auto;
+}
+
+
+/* 确保每个按钮大小一致 */
+.sidebar-buttons .btn {
+    width: 100%; /* 保证按钮的宽度是100%，与父元素一致 */
+    height: 80px; /* 固定按钮的高度 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 控制图片的大小一致 */
+.sidebar-buttons .btn img {
+    width: 100%;
+    height: 100%; /* 保证按钮中的图片在按钮内完整显示 */
+    object-fit: cover; /* 让图片保持比例的同时填充整个按钮 */
+}
+
+/* 右侧展示区域 */
+.display-title h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.display-area {
+    width: 100%;
+    height: 100%;  /* 默认展示区域高度 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;  /* 防止图片溢出 */
+    background-size: auto;  /* 保持原始尺寸，按照比例显示 */
+    background-position: center;  /* 保证场景图居中显示 */
+    background-repeat: no-repeat;  /* 不重复显示背景图 */
+    transition: width 0.3s ease, height 0.3s ease; /* 为宽度和高度添加平滑过渡 */
+}
+
+/* 当sidebar滑出时，调整display-area的大小 
+.display-area.shrink {
+    width: 75%;  /* 减小宽度 */
+    height: 70vh; /* 减小高度 */
+}*/
+
+/* 场景图像样式 */
+.display-area img {
+  position: absolute;
+    width: 100%;  /* Make the image fill the container's width */
+    height: 100%; /* Make the image fill the container's height */
+    object-fit: cover;  /* Ensure the image covers the container without distorting it */
+    z-index: 2;  /* Ensure the image is above other elements */
+
+}
+
+/* Sidebar for additional buttons: 动态右侧滑出菜单 */
+.sidebar {
+    position: absolute;
+    top: 0;
+    right: -300px; /* 初始状态，sidebar隐藏在右侧 */
+    width: 150px;
+    height: 100%;
+    background-color: #c7c3c3;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease-in-out; /* 控制滑出的动画 */
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* 允许纵向滚动 */
+} */
+
+/* 始终显示右侧的滚动条 */
+.sidebar {
+    position: absolute;
+    top: 0;
+    right: -300px; /* 初始状态，sidebar隐藏在右侧 */
+    width: 150px;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;  /* 确保滚动条始终显示 */
+    overflow-x: hidden;  /* 防止横向滚动条 */
+}
+
+/* 确保 sidebar-buttons 区域不会超出父容器的宽度 */
+.sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto; /* 纵向滚动条 */
+    max-height: calc(100% - 50px); /* 保证按钮区域占满剩余空间 */
+    overflow-x: hidden; /* 防止横向滚动条 */
+}
+
+
+/* 关闭按钮的样式 */
+.close-btn {
+    align-self: flex-end;
+    padding: 10px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* 关闭按钮鼠标悬停效果 */
+.close-btn:hover {
+    background-color: #ff4500;
+}
+
+/* Sidebar 显示时的效果 */
+.sidebar.show {
+    right: 0; /* 当设置show类时，sidebar从右侧滑出 */
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .samples-container, .scenes-container {
+        grid-template-columns: repeat(3, 1fr); /* 在小屏幕下改为3列 */
+    }
+
+    .samples-container .btn img {
+        width: 100%; /* 在小屏幕上保持图像宽度为100% */
+    }
+}
+
+/* 页面加载时的动画效果（淡入与缩放） */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8); /* 页面初始缩小 */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); /* 页面最终恢复正常大小 */
+    }
+}
+
+/* 页面主体动画效果 */
+#mainpage {
+    animation: fadeIn 1.5s ease-out; /* 1.5秒的动画，缓慢淡入 */
+}
+
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100px); /* 初始位置：上方 */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0); /* 最终位置：正常位置 */
+        opacity: 1;
+    }
+}
+
+#mainpage {
+    animation: slideInFromTop 1.5s ease-out;
+}
+
+/* 返回按钮的样式 */
+#rack6Button {
+    position: fixed; /* 固定在页面左下角 */
+    bottom: 20px; /* 离底部20px */
+    left: 20px; /* 离左边20px */
+    padding: 10px 5px;
+    background-color: #4CAF50; /* 背景色 */
+    color: black; /* 字体颜色 */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* 返回按钮的样式 */
+#rack7Button {
+    position: fixed; /* 固定在页面左下角 */
+    bottom: 20px; /* 离底部20px */
+    left: 85px; /* 离左边20px */
+    padding: 10px 5px;
+    background-color: #4CAF50; /* 背景色 */
+    color: black; /* 字体颜色 */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* 返回按钮的样式 */
+#rack8Button {
+    position: fixed; /* 固定在页面左下角 */
+    bottom: 20px; /* 离底部20px */
+    left: 150px; /* 离左边20px */
+    padding: 10px 5px;
+    background-color: #4CAF50; /* 背景色 */
+    color: black; /* 字体颜色 */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* 返回按钮的样式 */
+#rack9Button {
+    position: fixed; /* 固定在页面左下角 */
+    bottom: 20px; /* 离底部20px */
+    left: 215px; /* 离左边20px */
+    padding: 10px 5px;
+    background-color: #4CAF50; /* 背景色 */
+    color: black; /* 字体颜色 */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* 返回按钮的样式 */
+#backButton {
+    position: fixed; /* 固定在页面左下角 */
+    top: 20px; /* 离底部20px */
+    left: 20px; /* 离左边20px */
+    padding: 10px 20px;
+    background-color: #4CAF50; /* 背景色 */
+    color: white; /* 字体颜色 */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+
+/* 返回按钮的样式 */
+#nextButton {
+    position: fixed; /* 固定在页面左下角 */
+    display: inline-block;
+    bottom: 20px; /* 离底部20px */
+    left: 85px; /* 离左边20px */
+    padding: 10px 5px;
+    background-color: #04AA6D; /* 背景色 */
+    color: white; /* 字体颜色 */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* 返回按钮的样式 */
+#nextButton2 {
+    position: fixed; /* 固定在页面左下角 */
+    display: inline-block;
+    bottom: 20px; /* 离底部20px */
+    left: 150px; /* 离左边20px */
+    padding: 10px 5px;
+    background-color: #04AA6D; /* 背景色 */
+    color: white; /* 字体颜色 */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* 返回按钮的样式 */
+#nextButton3 {
+    position: fixed; /* 固定在页面左下角 */
+    display: inline-block;
+    bottom: 20px; /* 离底部20px */
+    left: 215px; /* 离左边20px */
+    padding: 10px 5px;
+    background-color: #04AA6D; /* 背景色 */
+    color: white; /* 字体颜色 */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* 返回按钮的样式 */
+#nextButton4 {
+    position: fixed; /* 固定在页面左下角 */
+    display: inline-block;
+    bottom: 20px; /* 离底部20px */
+    left: 20px; /* 离左边20px */
+    padding: 10px 5px;
+    background-color: #04AA6D; /* 背景色 */
+    color: white; /* 字体颜色 */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* 返回按钮的样式 */
+#nextButton5 {
+    position: fixed; /* 固定在页面左下角 */
+    display: inline-block;
+    bottom: 20px; /* 离底部20px */
+    left: 20px; /* 离左边20px */
+    padding: 10px 5px;
+    background-color: #04AA6D; /* 背景色 */
+    color: white; /* 字体颜色 */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* 返回按钮的样式 */
+#nextButton6 {
+    position: fixed; /* 固定在页面左下角 */
+    display: inline-block;
+    bottom: 20px; /* 离底部20px */
+    left: 20px; /* 离左边20px */
+    padding: 10px 5px;
+    background-color: #04AA6D; /* 背景色 */
+    color: white; /* 字体颜色 */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* 返回按钮的样式 */
+#nextButton7 {
+    position: fixed; /* 固定在页面左下角 */
+    display: inline-block;
+    bottom: 20px; /* 离底部20px */
+    left: 120px; /* 离左边20px */
+    padding: 10px 5px;
+    background-color: #04AA6D; /* 背景色 */
+    color: white; /* 字体颜色 */
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+
+/* 新按钮的样式 */
+.new-btn {
+    width: 100%;
+    height: 80px; /* 定义按钮的高度 */
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 20px; /* 为按钮与下面的内容留空隙 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.new-btn img {
+    width: 60%; /* 图片占据按钮的60%宽度 */
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover; /* 保证图片适应按钮 */
+}
+
+/* 保证原有按钮不受影响 */
+.sidebar-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    max-height: calc(100% - 50px); /* 保证按钮区域占满剩余空间 */
+}
+
+/* 其他现有按钮样式保持不变 */
+.sidebar-buttons .btn {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c7c3c3;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.sidebar-buttons .btn img {
+    width: 60%; /* 确保按钮内的图片大小一致 */
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* 弹出窗口的背景遮罩 */
+.popup-window {
+    position: fixed;
+    top: 20px;
+    left: 35px; /* 离左边20px */
+    width: 96%; /* Full width of the viewport */
+    height: 96%; /* Full height of the viewport */
+    background: rgba(0, 0, 0, 0.5); /* 半透明的背景 */
+    display: none; /* 初始隐藏 */
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease-out; /* 弹出窗口的动画效果 */
+    z-index: 9999 ; /* 保证在最上层 */
+
+}
+
+/* 弹出窗口的内容 */
+.popup-content {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* 关闭按钮的样式 */
+.popclose-btn {
+    position: fixed; /* 固定在页面左下角 */
+    top: 0px; /* 离top20px */
+    right: 15px; /* 离左边20px */
+    width: 35px;
+    height: 35px;
+    padding: 1px;
+    background-color: #fc0303;
+    color: white;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 100px;
+    transition: background-color 0.3s;
+}
+
+/* 关闭按钮鼠标悬停效果 */
+.popclose-btn:hover {
+    background-color: #c4b7b7;
+    color: black;
+
+}
+
+/* 弹出窗口的动画效果 */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8); /* 初始时缩小 */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); /* 最终恢复正常大小 */
+    }
+}
+
+/* 为 new0button 添加悬浮效果 */
+.new-btn {
+    border: none; /* 去掉默认边框 */
+    background-color: transparent; /* 去掉背景颜色 */
+    cursor: pointer; /* 让按钮可点击 */
+    position: relative; /* 方便调整动画 */
+    transition: transform 0.3s ease; /* 动画效果：放大并平滑过渡 */
+}
+
+/* 鼠标悬浮时按钮放大 */
+.new-btn:hover {
+    transform: scale(1.1); /* 鼠标悬浮时放大1.1倍 */
+}
+
+/* 按钮点击时的动画效果 */
+.new-btn:active {
+    transform: scale(0.95); /* 按钮点击时稍微缩小 */
+}
+
+/* 按钮的悬停效果 */
+#backButton:hover:hover {
+    background-color: #f7c179; /* 悬停时改变背景色 */
+    color: black;
+}
+
+
+/* 按钮的悬停效果 */
+#nextButton:hover:hover {
+    background-color: #c9c9c9; /* 悬停时改变背景色 */
+    color: black;
+}
+
+/* 按钮的悬停效果 */
+#nextButton2:hover:hover {
+    background-color: #c9c9c9; /* 悬停时改变背景色 */
+    color: black;
+}
+
+/* 按钮的悬停效果 */
+#nextButton3:hover:hover {
+    background-color: #c9c9c9; /* 悬停时改变背景色 */
+    color: black;
+}
+
+/* 按钮的悬停效果 */
+#nextButton4:hover:hover {
+    background-color: #c9c9c9; /* 悬停时改变背景色 */
+    color: black;
+}
+
+/* 按钮的悬停效果 */
+#nextButton5:hover:hover {
+    background-color: #c9c9c9; /* 悬停时改变背景色 */
+    color: black;
+}
+/* 按钮的悬停效果 */
+#nextButton6:hover:hover {
+    background-color: #c9c9c9; /* 悬停时改变背景色 */
+    color: black;
+}
+/* 按钮的悬停效果 */
+#nextButton7:hover:hover {
+    background-color: #c9c9c9; /* 悬停时改变背景色 */
+    color: black;
+}
+/* 按钮聚焦效果（移除默认的聚焦边框） */
+#backButton:focus, #productInfoButton:focus {
+    outline: none; /* 移除聚焦时的边框 */
+}
+
+#backButton:hover {
+    background-color: #45a049; /* 悬停时改变背景色 */
+}
+
+#backButton:focus {
+    outline: none; /* 移除聚焦时的边框 */
+}
